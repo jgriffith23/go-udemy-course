@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting Home</title>
+</head>
+
+<body>
+
+    <h1>Want a custom greeting?</h1>
+    {{ if . }}
+      <p style="color:red"><i>{{ . }}</i></p>
+    {{ end }}
+    <br>
+    <h3>Log In</h3>
+    <form action="/login" method="POST">
+      Email: <input type="text" name="email">
+      <br>
+      Password: <input type="text" name="password">
+      <br>
+      <input type="submit" name="login-submit" value="Log In">
+    </form>
+
+    <br>
+    <hr>
+    <br>
+
+    <h3>Register</h3>
+    <form action="/register" method="POST">
+      Email: <input type="text" name="email">
+      <br>
+      Password: <input type="text" name="password">
+      <br>
+      First Name: <input type="text" name="first">
+      <br>
+      Last Name: <input type="text" name="last">
+      <br> 
+      <input type="submit" name="register-submit" value="Register">
+    </form>
+
+</body>
+</html>

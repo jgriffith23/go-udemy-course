@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+
+  {{ if .Method }}<p> Request method: {{ .Method }}</p>{{ end }}
+
+  {{ if .URL }}
+    <h1>URL Info</h1>
+    <ul>
+      <li> Scheme: {{ .URL.Scheme }} </li>
+      <li> Opaque: {{ .URL.Opaque }} </li>
+      <li> Host: {{ .URL.Host }} </li>
+      <li> Path: {{ .URL.Path }} </li>
+      <li> RawPath: {{ .URL.RawPath }} </li>
+      <li> ForceQuery: {{ .URL.ForceQuery }} </li>
+      <li> RawQuery: {{ .URL.RawQuery }} </li>
+      <li> Fragment: {{ .URL.Fragment }} </li>
+    </ul>
+    {{ end }}
+
+    {{ if .Submissions }}
+      <h1>Variable Names and Values</h1>
+      {{ range $name, $value := .Submissions }}
+        <p><strong>{{ $name }}</strong></p>
+        <ul>
+          {{ range $value }} 
+            <li>
+              {{ . }}
+            </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    {{ end }}
+
+    {{ if .Header }}
+      <h1>The Headers!</h1>
+      {{ range $title, $value := .Header }}
+        <h3> {{ $title }} </h3>
+        <ul>
+          {{ range $value }}
+            <li> {{ . }} </li>
+          {{ end }}
+        </ul>
+      {{ end }}
+    {{ end }}
+
+    <form action="/" method="POST">
+      Email: <input type="text" name="email">
+      <br>
+      Password: <input type="text" name="password">
+      <br>
+      <input type="submit" name="submit-btn" value="Log In">
+    </form>
+
+</body>
+</html>
